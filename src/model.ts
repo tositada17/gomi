@@ -1,25 +1,38 @@
-import * as vs from "vscode"
+import * as vscode from "vscode"
 import { Tracer } from "./tracer";
+import {execSync,execFileSync} from 'child_process';
+import path from "path";
+import { get } from "http";
+import { ShellService } from "./shellService";
+
 
 export interface Configuration {
     readonly traceLevel: string
 }
 
-export function getConfiguration(): Configuration{
-    return {
-        traceLevel: <string>vs.workspace.getConfiguration('gomi').get('traceLevel')
-    }
-};
+
+export interface FileInfo{
+    abstPath: string,
+    relativePath: string,
+    virtualPath: string,
+    filename: string,
+    restorePath: string,
+}
 
 export class Model{
     private _config: Configuration;
-    
+
     constructor(
-        context: vs.ExtensionContext
+        context: vscode.ExtensionContext
     ){
-        vs.commands.executeCommand('setContext', 'gomi.traceLevel', "off");
-        this._config= getConfiguration();
+        this._config= this.getConfiguration();
         Tracer.level = this._config.traceLevel;
+    };
+
+    getConfiguration(): Configuration{
+        return {
+            traceLevel: <string>vscode.workspace.getConfiguration('gomi').get('traceLevel')
+        }
     };
 
     get configration(): Configuration{

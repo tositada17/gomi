@@ -12,16 +12,39 @@
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
-    "commands":[
+    "views": {
+      "explorer": [
+        {
+          "id": "gomiTree",
+          "title": "gomi tree",
+          "name": "gomi tree"
+        }
+      ]
+    },
+    "commands": [
       {
-        "command":"gomi.helloWorld",
-        "title":"hello World"
+        "command": "gomi.helloWorld",
+        "title": "hello World"
       },
       {
-        "command":"gomi.infoMessage",
-        "title":"info Message"
+        "command": "gomi.infoMessage",
+        "title": "info Message"
       },
+      {
+        "command": "gomi.refresh",
+        "title": "gomi Refresh",
+        "icon": "$(refresh)"
+      }
     ],
+    "menus":{
+      "view/title": [
+        {
+          "command": "gomi.refresh",
+          "when": "view == gomiTree",
+          "group": "navigation"
+        }
+      ]
+    },
     "configuration": {
       "properties": {
         "gomi.traceLevel": {
@@ -45,7 +68,10 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src",
-    "test": "node ./out/test/runTest.js"
+    "test": "node ./out/test/runTest.js",
+    "build": "npm run copy-chart-js",
+    "bundle": "esbuild src/extension.ts --bundle --outdir=dist --external:vscode --platform=node --target=node12.18 --sourcemap",
+    "copy-chart-js": "cpy node_modules/chart.js/dist/chart.js node_modules/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.js dist/ --flat"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
@@ -61,6 +87,7 @@
   "dependencies": {
     "@vscode/vsce": "^3.2.2",
     "generator-code": "^1.11.10",
+    "iconv-lite": "^0.6.3",
     "mocha": "^11.7.1",
     "typescript-eslint": "^8.38.0"
   }
