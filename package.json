@@ -1,15 +1,31 @@
 {
   "name": "gomi",
   "displayName": "gomi",
-  "description": "",
+  "description": "list recyclebin item .view recyclebin item. copy recyclebin item. ",
   "version": "0.0.1",
+  "publisher": "tositadanakada",
+  "author":{
+  "email": "tositadanakada@gmail.com",
+    "name": "tositadanakada"
+  },
   "engines": {
     "vscode": "^1.97.0"
   },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url":"https://github.com/tositadanakada/gomi"
+  },
+  "icon":"media/gomi.png",
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "keywords":[
+    "recyclebin"
+  ],
+  "activationEvents": [
+    "*"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "views": {
