@@ -3,10 +3,10 @@
 # Features
 
 - list recyclebin items
-![listitem](/media/listitem.gif)
+![listitem](https://raw.githubusercontent.com/tositadanakada/gomi/master/media/demo/openitem.gif)
 
 - open recyclebin items
-![openitem](/media/openitem.gif)
+![openitem](https://raw.githubusercontent.com/tositadanakada/gomi/master/media/demo/openitem.gif)
 
 - update recyclebin list
-![refreshfile](/media/refreshitem.gif)
+![refreshfile](https://raw.githubusercontent.com/tositadanakada/gomi/master/media/demo/refreshitem.gif)
