@@ -3,9 +3,10 @@
 # Features
 
 - list recyclebin items
-[image]
+![listitem](/media/listitem.gif)
 
 - open recyclebin items
-[image]
+![openitem](/media/openitem.gif)
+
 - update recyclebin list
-[image]
+![refreshfile](/media/refreshitem.gif)
